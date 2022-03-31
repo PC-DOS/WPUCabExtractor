@@ -1,0 +1,78 @@
+﻿<Window x:Class="MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Windows Update CAB 提取重建工具" Height="400" Width="600" MinWidth="525" MinHeight="350" Icon="Assets/Icon/Icon.ico">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="本工具根据已解压缩的 Windows Phone Update 描述文件 (dsm 文件) 中的描述，从源目录抽取文件重构系统目录结构或包结构。" TextWrapping="Wrap" />
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,10,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="DSM 文件路径:" />
+            <Grid Grid.Row="1" Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txtInputDir" Grid.Column="0" IsReadOnly="True" IsReadOnlyCaretVisible="True" Margin="0,0,5,0"/>
+                <Button x:Name="btnBrowseInput" Grid.Column="1" Content="浏览(_B)..." Width="55"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" Margin="0,5,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="用于抽取文件的路径:" />
+            <Grid Grid.Row="1" Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txtResourceDir" Grid.Column="0" IsReadOnly="True" IsReadOnlyCaretVisible="True" Margin="0,0,5,0"/>
+                <Button x:Name="btnBrowseResource" Grid.Column="1" Content="浏览(_B)..." Width="55"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3" Margin="0,5,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="重建的目录或包结构路径:" />
+            <Grid Grid.Row="1" Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txtOutputDir" Grid.Column="0" IsReadOnly="True" IsReadOnlyCaretVisible="True" Margin="0,0,5,0"/>
+                <Button x:Name="btnBrowseOutput" Grid.Column="1" Content="浏览(_B)..." Width="55"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="4" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnStart" Grid.Column="0" Content="开始(_S)" Height="25" Width="50"/>
+            <CheckBox x:Name="chkKeepStructure" Grid.Column="1" Content="抽取的文件保持原始目录结构，而不要整理为包结构(_K)" VerticalAlignment="Center" Margin="10,0,0,0" />
+        </Grid>
+        <ListBox x:Name="lstMessage" Grid.Row="5" Margin="0,10,0,0"/>
+        <ProgressBar x:Name="prgProgress" Grid.Row="6" Minimum="0" Maximum="100" Height="10" Margin="0,10,0,0"/>
+    </Grid>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo x:Name="TaskbarItem" />
+    </Window.TaskbarItemInfo>
+</Window>
